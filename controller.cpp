@@ -32,12 +32,15 @@ void Controller::execute_cmd(int cmd) {
 	
 		cout << "wholesale Cost?";
 		cin >> wholesale_cost;
+		cin.ignore();
 	
 		cout << "Retail price?";
 		cin >> retail_cost;
+		cin.ignore();
 	
 		cout << "Stock Remaining?";
 		cin >> stock;
+		cin.ignore();
 	
 		cout << "Flavor Description?";
 		getline(cin, info);
@@ -54,15 +57,19 @@ void Controller::execute_cmd(int cmd) {
 	
 		cout << "wholesale Cost?";
 		cin >> wholesale_cost;
+		cin.ignore();
 	
 		cout << "Retail price?";
 		cin >> retail_cost;
+		cin.ignore();
 	
 		cout << "Stock Remaining?";
 		cin >> stock;
+		cin.ignore();
 	
 		cout << "Scoop Capacity?";
 		cin >> capacity;
+		cin.ignore();
 	
 		cout << "Container Description?";
 		getline(cin, info);
@@ -79,12 +86,15 @@ void Controller::execute_cmd(int cmd) {
 	
 		cout << "wholesale Cost?";
 		cin >> wholesale_cost;
+		cin.ignore();
 	
 		cout << "Retail price?";
 		cin >> retail_cost;
+		cin.ignore();
 	
 		cout << "Stock Remaining?";
 		cin >> stock;
+		cin.ignore();
 	
 		cout << "Topping Description?";
 		getline(cin, info);

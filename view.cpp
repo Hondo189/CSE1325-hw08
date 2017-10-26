@@ -39,7 +39,7 @@ List of Ice Cream Scoops
 )";
 	cout << header;
 	for (int i=0; i<items.number_of_scoops(); i++) {
-		cout << i << ") " items.scoop_to_string(i) << endl;
+		cout << i << ") " << items.scoop_to_string(i) << endl;
 	}
 }
 
@@ -51,7 +51,7 @@ List of Ice Cream Containers
 )";
 	cout << header;
 	for (int i=0; i<items.number_of_containers(); i++) {
-		cout << i << ") " items.cont_to_string(i) << endl;
+		cout << i << ") " << items.cont_to_string(i) << endl;
 	}
 }
 
@@ -63,6 +63,6 @@ List of Ice Cream Toppings
 )";
 	cout << header;
 	for (int i=0; i<items.number_of_toppings(); i++) {
-		cout << i << ") " items.top_to_string(i) << endl;
+		cout << i << ") " << items.top_to_string(i) << endl;
 	}
 }
