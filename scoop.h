@@ -6,12 +6,18 @@ using namespace std;
 
 class Scoop {
 	public:
-		Scoop (string name_in, string info_in, double wholesale_in, double retail_in, int stock_in);
-		string s_name;
-		string s_info;
-		double s_wholesale_cost;
-		double s_retail_cost;
-		int s_stock;
+		//Scoop (string name_in, string info_in, double wholesale_in, double retail_in, int stock_in);
+		Scoop(string s_name,
+			  string s_info,
+			  double s_wholesale_cost,
+			  double s_retail_cost,
+			  int s_stock) :
+			  
+			  name(s_name),
+			  info(s_info),
+			  wholesale_cost(s_wholesale_cost),
+			  retail_cost(s_retail_cost),
+			  stock(s_stock) { }
 		
 	private:
 		string name;
