@@ -6,7 +6,6 @@ using namespace std;
 
 class Scoop {
 	public:
-		//Scoop (string name_in, string info_in, double wholesale_in, double retail_in, int stock_in);
 		Scoop(string s_name,
 			  string s_info,
 			  double s_wholesale_cost,

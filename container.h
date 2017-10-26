@@ -6,20 +6,19 @@ using namespace std;
 
 class Container {
 	public:
-		//Container (string name_in, string info_in, double wholesale_in, double retail_in, int stock_in, int capacity_in);
 		Container(string c_name,
-			  string c_info,
-			  double c_wholesale_cost,
-			  double c_retail_cost,
-			  int c_stock,
-			  int c_capacity) :
-			  
-			  name(c_name),
-			  info(c_info),
-			  wholesale_cost(c_wholesale_cost),
-			  retail_cost(c_retail_cost),
-			  stock(c_stock),
-			  capacity(c_capacity) { }
+				  string c_info,
+				  double c_wholesale_cost,
+				  double c_retail_cost,
+				  int c_stock,
+				  int c_capacity) :
+				  
+				  name(c_name),
+				  info(c_info),
+				  wholesale_cost(c_wholesale_cost),
+				  retail_cost(c_retail_cost),
+				  stock(c_stock),
+				  capacity(c_capacity) { }
 		
 	private:
 		string name;
