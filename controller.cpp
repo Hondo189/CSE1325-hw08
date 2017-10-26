@@ -47,7 +47,7 @@ void Controller::execute_cmd(int cmd) {
 	
 		items.add_scoop(Scoop(flavor, info, wholesale_cost, retail_cost, stock));
 	}
-	if (cmd == 2) { //add container
+	else if (cmd == 2) { //add container
 		string name, info;
 		double wholesale_cost, retail_cost;
 		int stock, capacity;
@@ -76,7 +76,7 @@ void Controller::execute_cmd(int cmd) {
 	
 		items.add_container(Container(name, info, wholesale_cost, retail_cost, stock, capacity));
 	}
-	if (cmd == 3) { //add topping
+	else if (cmd == 3) { //add topping
 		string name, info;
 		double wholesale_cost, retail_cost;
 		int stock;
@@ -101,4 +101,16 @@ void Controller::execute_cmd(int cmd) {
 	
 		items.add_topping(Topping(name, info, wholesale_cost, retail_cost, stock));
 	}
-}	
+	else if (cmd == 4) {//list scoops
+		view.list_scoops();
+	}
+	else if (cmd == 5) {//list containers
+		view.list_containers();
+	}
+	else if (cmd == 6) {//list toppings
+		view.list_toppings();
+	}
+	else if (cmd == 9) {//help
+		view.help();	
+	}
+}		

@@ -66,3 +66,13 @@ List of Ice Cream Toppings
 		cout << i << ") " << items.top_to_string(i) << endl;
 	}
 }
+
+void View::help() {
+	string help = R"(
+====
+Help
+====
+Enter an integer corresponding to the command you wish to execute
+)";
+	cout << help << endl;	
+}
