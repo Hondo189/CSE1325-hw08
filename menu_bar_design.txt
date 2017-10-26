@@ -1,0 +1,23 @@
+File - Customer, Server, Manager, Owner
+	Populate Test Data - populates data with values to test the program
+	Help - Help text
+	Exit - exits program
+
+Add Item - Manager
+	Add Scoop - adds ice cream scoop to inventory
+	Add Container - adds container to inventory
+	Add Topping - adds topping to inventory
+
+Order - Server, Customer
+	Show Order - show contents of order
+	Create Order - create new order
+	
+Inventory - Manager
+	Manage Orders - manage state of orders
+	Create Emporium - initialize inventory and register
+	Save Data - saves data to file
+	Load Data - loads data from file
+	Display Inventory - shows inventory items
+	
+Personel - Owner
+	Create Manager - creates new manager account	
