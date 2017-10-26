@@ -11,8 +11,9 @@ using namespace std;
 class Items {
 	public:
 		void add_scoop(Scoop scoop);
-		void add_container(Container container);
-		void add_topping(Topping topping);
+		void add_container(Container cont);
+		void add_topping(Topping top);
+		void test_data();
 	private:
 		vector<Scoop> scoops;
 		vector<Container> containers;
