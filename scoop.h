@@ -17,6 +17,7 @@ class Scoop {
 			  wholesale_cost(s_wholesale_cost),
 			  retail_cost(s_retail_cost),
 			  stock(s_stock) { }
+		string to_string();
 		
 	private:
 		string name;

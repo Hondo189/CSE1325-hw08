@@ -19,6 +19,7 @@ class Container {
 				  retail_cost(c_retail_cost),
 				  stock(c_stock),
 				  capacity(c_capacity) { }
+		string to_string();
 		
 	private:
 		string name;
