@@ -25,6 +25,5 @@ class Topping {
 		double wholesale_cost;
 		double retail_cost;
 		int stock;
-		int capacity;
 };
 #endif
