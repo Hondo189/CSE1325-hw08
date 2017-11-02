@@ -10,3 +10,7 @@ string Container::to_string() {
 		"\nDescription: " +info;
 	return cont;
 }
+
+string Container::get_name() {
+	return name;
+}

@@ -20,6 +20,7 @@ class Container {
 				  stock(c_stock),
 				  capacity(c_capacity) { }
 		string to_string();
+		string get_name();
 		
 	private:
 		string name;

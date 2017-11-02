@@ -15,6 +15,11 @@ Main_window::Main_window(Controller& controller) : _controller{controller} {
 	Gtk::Menu *filemenu = Gtk::manage(new Gtk::Menu());
 	menuitem_file->set_submenu(*filemenu);
 	
+		//Populate Test Data
+		Gtk::MenuItem *menuitem_test = Gtk::manage(new Gtk::MenuItem("_Test Data", true));
+		menuitem_test->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_test_data_click));
+		filemenu->append(*menuitem_test);
+		
 		//Show Help Dialog
 		Gtk::MenuItem *menuitem_help = Gtk::manage(new Gtk::MenuItem("_Help", true));
 		menuitem_help->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_help_click));
@@ -73,6 +78,17 @@ Main_window::Main_window(Controller& controller) : _controller{controller} {
 		menuitem_listtop->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_list_toppings_click));
 		topmenu->append(*menuitem_listtop);		
 		
+	//Add Order Menu
+	Gtk::MenuItem *menuitem_order = Gtk::manage(new Gtk::MenuItem("_Order", true));
+	menubar->append(*menuitem_order);
+	Gtk::Menu *ordermenu = Gtk::manage(new Gtk::Menu());
+	menuitem_order->set_submenu(*ordermenu);
+		
+		//Append Add Serving to Order Menu
+		Gtk::MenuItem *menuitem_add_serving = Gtk::manage(new Gtk::MenuItem("_Add Serving", true));
+		menuitem_add_serving->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_add_serving_click));
+		ordermenu->append(*menuitem_add_serving);		
+		
 		vbox->show_all();	
 }
 
@@ -85,6 +101,7 @@ void Main_window::on_add_topping_click() {_controller.execute_cmd(3);}
 void Main_window::on_list_scoops_click() {_controller.execute_cmd(4);}
 void Main_window::on_list_containers_click() {_controller.execute_cmd(5);}
 void Main_window::on_list_toppings_click() {_controller.execute_cmd(6);}
+void Main_window::on_add_serving_click() {_controller.execute_cmd(7);};
 void Main_window::on_help_click() {_controller.execute_cmd(9);}
 void Main_window::on_test_data_click() {_controller.execute_cmd(99);}
 void Main_window::on_quit_click() { hide(); }

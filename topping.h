@@ -18,6 +18,7 @@ class Topping {
 				 retail_cost(t_retail_cost),
 				 stock(t_stock) { }
 		string to_string();
+		string get_name();
 		
 	private:
 		string name;

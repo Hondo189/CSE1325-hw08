@@ -9,3 +9,7 @@ string Topping::to_string() {
 		+"\nDescription: " +info;
 	return top;
 }
+
+string Topping::get_name() {
+	return name;
+}

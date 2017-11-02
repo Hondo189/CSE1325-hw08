@@ -309,12 +309,21 @@ void Controller::execute_cmd(int cmd) {
 	else if (cmd == 6) {//list toppings
 		view.list_toppings();
 	}
+	else if (cmd == 7) {//add serving
+		
+	}
 	else if (cmd == 9) {//help
 		view.help();	
 	}
 	else if (cmd == 99) {//populate test data
-		items.add_scoop(Scoop("Vanilla", "Classic Vanilla Bean", .5, 2, 500);
-		items.add_container(Container("Sugar Cone", "Classic Cripsy Cone", .25, 1, 200);
-		items.add_topping(Topping("Chocolate Sprinkles", "Chocolate Flavored Sprinkles", .01, .25, 1000);
+		items.add_scoop(Scoop("Vanilla", "Classic Vanilla Flavor", .5, 2, 500));
+		items.add_scoop(Scoop("Chocolate", "Classic Chocolate Flavor", .6, 2, 500));
+		items.add_scoop(Scoop("Strawberry", "Fresh Strawberry Flavor", .7, 2.25, 300));
+		items.add_container(Container("Sugar Cone", "Classic Cripsy Cone", .25, 1, 200, 2));
+		items.add_container(Container("Waffle Cone", "Freshly Made Waffle Cone", .4, 1.5, 150, 3));
+		items.add_container(Container("Paper Bowl", "Disposable Paper Bowl", .05, .1, 500, 4));		
+		items.add_topping(Topping("Chocolate Sprinkles", "Chocolate Flavored Sprinkles", .01, .25, 1000));
+		items.add_topping(Topping("Rainbow Sprinkles", "Multi-Colored Sprinkles", .01, .25, 2000));
+		items.add_topping(Topping("Roasted Peanuts", "Crushed Roasted Peanuts", .1, .5, 800));
 	}
 }		

@@ -35,32 +35,70 @@ CSE1325 MICE Management System<sup><small>TM</small></sup></span>
   }
 }
 
-
-void View::list_scoops() {
+string View::get_scoops() {
 	string scoop_list = "";
-
 	for (int i=0; i<items.number_of_scoops(); i++) {
 		scoop_list += std::to_string(i+1) + ") " + items.scoop_to_string(i) + "\n";
 	}
-	Dialogs::message(scoop_list, "List of Flavors");
+	return scoop_list;
 }
 
-void View::list_containers() {
-	string container_list = "";
+void View::list_scoops() {
+	Dialogs::message(get_scoops(), "List of Flavors");
+}
 
+int View::select_scoop() {
+	string result = Dialogs::input(get_scoops(), "Select A Scoop");
+	
+	try {
+		return (result == "CANCEL") ? -1 : stoi(result);
+	} catch (...) {
+		Dialogs::message("Invalid entry - please type an integer");
+	}
+}
+
+string View::get_containers() {
+	string container_list = "";
 	for (int i=0; i<items.number_of_containers(); i++) {
 		container_list += std::to_string(i+1) + ") " + items.cont_to_string(i) + "\n";
 	}
-	Dialogs::message(container_list, "List of Containers");
+	return container_list;
 }
 
-void View::list_toppings() {
-	string topping_list = "";
+void View::list_containers() {
+	Dialogs::message(get_containers(), "List of Containers");
+}
 
+int View::select_container() {
+	string result = Dialogs::input(get_containers(), "Select A Container");
+	
+	try {
+		return (result == "CANCEL") ? -1 : stoi(result);
+	} catch (...) {
+		Dialogs::message("Invalid entry - please type an integer");
+	}
+}
+
+string View::get_toppings() {
+	string topping_list = "";
 	for (int i=0; i<items.number_of_toppings(); i++) {
 		topping_list += std::to_string(i+1) + ") " + items.top_to_string(i) + "\n";
 	}
-	Dialogs::message(topping_list, "List of Toppings");
+	return topping_list;
+}
+
+void View::list_toppings() {
+	Dialogs::message(get_toppings(), "List of Toppings");
+}
+
+int View::select_topping() {
+	string result = Dialogs::input(get_toppings(), "Select A Topping");
+	
+	try {
+		return (result == "CANCEL") ? -1 : stoi(result);
+	} catch (...) {
+		Dialogs::message("Invalid entry - please type an integer");
+	}
 }
 
 void View::help() {

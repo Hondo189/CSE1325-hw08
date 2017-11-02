@@ -16,8 +16,9 @@ class Main_window : public Gtk::Window
 		void on_list_scoops_click();	  //List scoop inventory
 		void on_list_containers_click();  //list container inventory
 		void on_list_toppings_click();    //list topping inventory
+		void on_add_serving_click();	  //add serving
 		void on_help_click();			  //help dialog
-		//void on_test_data_click();		  //populate test data
+		void on_test_data_click();		  //populate test data
 		void on_quit_click();			  //quit program
     private:
         Gtk::Label *msg;                  // Status message display

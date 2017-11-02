@@ -9,3 +9,7 @@ string Scoop::to_string() {
 		"\nDescription: " +info;
 	return scp;
 }
+
+string Scoop::get_name() {
+	return name;
+}

@@ -9,8 +9,14 @@ class View {
 		void list_scoops();
 		void list_containers();
 		void list_toppings();
+		int select_scoop();
+		int select_container();
+		int select_topping();
 		void help();
 	private:
 		Items& items;
+		string get_scoops();
+		string get_containers();
+		string get_toppings();		
 };
 #endif
