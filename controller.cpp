@@ -310,7 +310,19 @@ void Controller::execute_cmd(int cmd) {
 		view.list_toppings();
 	}
 	else if (cmd == 7) {//add serving
+		int scoop, cont, top;
+		string scoop_name, cont_name, top_name;
 		
+		scoop = view.select_scoop();
+		cont = view.select_container();
+		top = view.select_topping();
+		
+		scoop_name = items.scoop_name(scoop);
+		cont_name = items.cont_name(cont);
+		top_name = items.top_name(top);
+		
+		items.add_serving(Serving(scoop_name, cont_name, top_name));
+		view.list_servings();		
 	}
 	else if (cmd == 9) {//help
 		view.help();	

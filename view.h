@@ -9,6 +9,7 @@ class View {
 		void list_scoops();
 		void list_containers();
 		void list_toppings();
+		void list_servings();
 		int select_scoop();
 		int select_container();
 		int select_topping();
@@ -17,6 +18,7 @@ class View {
 		Items& items;
 		string get_scoops();
 		string get_containers();
-		string get_toppings();		
+		string get_toppings();
+		string get_servings();		
 };
 #endif

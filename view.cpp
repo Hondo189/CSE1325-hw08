@@ -38,7 +38,7 @@ CSE1325 MICE Management System<sup><small>TM</small></sup></span>
 string View::get_scoops() {
 	string scoop_list = "";
 	for (int i=0; i<items.number_of_scoops(); i++) {
-		scoop_list += std::to_string(i+1) + ") " + items.scoop_to_string(i) + "\n";
+		scoop_list += std::to_string(i) + ") " + items.scoop_to_string(i) + "\n";
 	}
 	return scoop_list;
 }
@@ -60,7 +60,7 @@ int View::select_scoop() {
 string View::get_containers() {
 	string container_list = "";
 	for (int i=0; i<items.number_of_containers(); i++) {
-		container_list += std::to_string(i+1) + ") " + items.cont_to_string(i) + "\n";
+		container_list += std::to_string(i) + ") " + items.cont_to_string(i) + "\n";
 	}
 	return container_list;
 }
@@ -82,7 +82,7 @@ int View::select_container() {
 string View::get_toppings() {
 	string topping_list = "";
 	for (int i=0; i<items.number_of_toppings(); i++) {
-		topping_list += std::to_string(i+1) + ") " + items.top_to_string(i) + "\n";
+		topping_list += std::to_string(i) + ") " + items.top_to_string(i) + "\n";
 	}
 	return topping_list;
 }
@@ -99,6 +99,18 @@ int View::select_topping() {
 	} catch (...) {
 		Dialogs::message("Invalid entry - please type an integer");
 	}
+}
+
+string View::get_servings() {
+	string serving_list = "";
+	for (int i=0; i<items.number_of_servings(); i++) {
+		serving_list += std::to_string(i) + ") " + items.serv_to_string(i) + "\n";
+	}
+	return serving_list;
+}
+
+void View::list_servings() {
+	Dialogs::message(get_servings(), "List of Servings");
 }
 
 void View::help() {
