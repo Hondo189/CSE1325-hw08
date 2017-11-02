@@ -1,9 +1,42 @@
 #include "view.h"
+#include "dialogs.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
-void View::show_menu() {
+int View::show_menu() {
+  string menu = R"(
+<span font='18' weight='bold'>                     CSE1325 
+CSE1325 MICE Management System<sup><small>TM</small></sup></span>
+
+<span weight='bold' underline='double'>Add Item</span>
+(1) Add Ice Cream Scoop
+(2) Add Ice Cream Container
+(3) Add Ice Cream Topping
+
+<span weight='bold' underline='double'>Check Inventory</span>
+(4) List Ice Cream Scoops
+(5) List Ice Cream Containers
+(6) List Ice Cream Toppings
+
+<span weight='bold' underline='double'>Utility</span>
+<span color='#007f00'><b>(9) Help</b></span>
+(9) Help
+(99) Populate Test Data
+(0) Exit
+
+)";
+
+  string result = Dialogs::input(menu, "Main Menu");
+  try {
+    return (result == "CANCEL") ? 0 : stoi(result);
+  } catch (...) {
+    return -1;
+  }
+}
+
+
+/*void View::show_menu() {
 	string menu = R"(
 ==============================
 CSE1325 MICE Management System
@@ -29,50 +62,36 @@ Utility
 )";
 
 	cout << menu << endl;
-}
+}*/
 
 void View::list_scoops() {
-	string header = R"(
-------------------------
-List of Ice Cream Scoops
-------------------------
-)";
-	cout << header;
+	string scoop_list = "";
+
 	for (int i=0; i<items.number_of_scoops(); i++) {
-		cout << i << ") " << items.scoop_to_string(i) << endl;
+		scoop_list += std::to_string(i+1) + ") " + items.scoop_to_string(i) + "\n";
 	}
+	Dialogs::message(scoop_list, "List of Flavors");
 }
 
 void View::list_containers() {
-	string header = R"(
-----------------------------
-List of Ice Cream Containers
-----------------------------
-)";
-	cout << header;
+	string container_list = "";
+
 	for (int i=0; i<items.number_of_containers(); i++) {
-		cout << i << ") " << items.cont_to_string(i) << endl;
+		container_list += std::to_string(i+1) + ") " + items.cont_to_string(i) + "\n";
 	}
+	Dialogs::message(container_list, "List of Containers");
 }
 
 void View::list_toppings() {
-	string header = R"(
---------------------------
-List of Ice Cream Toppings
---------------------------
-)";
-	cout << header;
+	string topping_list = "";
+
 	for (int i=0; i<items.number_of_toppings(); i++) {
-		cout << i << ") " << items.top_to_string(i) << endl;
+		topping_list += std::to_string(i+1) + ") " + items.top_to_string(i) + "\n";
 	}
+	Dialogs::message(topping_list, "List of Toppings");
 }
 
 void View::help() {
-	string help = R"(
-====
-Help
-====
-Enter an integer corresponding to the command you wish to execute
-)";
-	cout << help << endl;	
+	string help = "Enter an integer corresponding to the command you wish to execute";
+	Dialogs::message(help, "Help");
 }

@@ -5,7 +5,7 @@
 class View {
 	public:
 		View(Items& _items) : items(_items) { }
-		void show_menu();
+		int show_menu();
 		void list_scoops();
 		void list_containers();
 		void list_toppings();

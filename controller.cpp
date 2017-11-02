@@ -5,6 +5,7 @@
 #include "container.h"
 #include "topping.h"
 #include "top_request.h"
+#include "dialogs.h"
 #include <iostream>
 #include <string>
 
@@ -23,83 +24,281 @@ void Controller::cli() {
 
 void Controller::execute_cmd(int cmd) {
 	if (cmd == 1) { //add scoop
-		string flavor, info;
-		double wholesale_cost, retail_cost;
-		int stock;
+	string name, info; 
+	double wholesale, retail; 
+	int remaining;
+	bool cancel = false;
+
+	Gtk::Dialog *dialog = new Gtk::Dialog();
+	dialog->set_title("Create New Flavor");
+
+
+	//Name of the Flavor
+	Gtk::HBox b_name;
 	
-		cout << "Ice Cream Scoop Flavor?";
-		getline(cin, flavor);
+	Gtk::Label l_name{"Name of Flavor:"};
+	l_name.set_width_chars(30);
+	b_name.pack_start(l_name, Gtk::PACK_SHRINK);
+
+	Gtk::Entry e_name;
+	e_name.set_max_length(50);
+	b_name.pack_start(e_name, Gtk::PACK_SHRINK);
+	dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);
+
+	//Description of the Flavor
+	Gtk::HBox b_info;
 	
-		cout << "wholesale Cost?";
-		cin >> wholesale_cost;
-		cin.ignore();
+	Gtk::Label l_info{"Description:"};
+	l_info.set_width_chars(30);
+	b_info.pack_start(l_info, Gtk::PACK_SHRINK);
+
+	Gtk::Entry e_info;
+	e_info.set_max_length(50);
+	b_info.pack_start(e_info, Gtk::PACK_SHRINK);
+	dialog->get_vbox()->pack_start(b_info, Gtk::PACK_SHRINK);
+
+	//Whole sale price
+	Gtk::HBox b_wholesale;
 	
-		cout << "Retail price?";
-		cin >> retail_cost;
-		cin.ignore();
+	Gtk::Label l_wholesale{"Whole sale price ($):"};
+	l_wholesale.set_width_chars(30);
+	b_wholesale.pack_start(l_wholesale, Gtk::PACK_SHRINK);
+
+	Gtk::Entry e_wholesale;
+	e_wholesale.set_max_length(50);
+	b_wholesale.pack_start(e_wholesale, Gtk::PACK_SHRINK);
+	dialog->get_vbox()->pack_start(b_wholesale, Gtk::PACK_SHRINK);
+
+	//Retail Price
+	Gtk::HBox b_retail;
 	
-		cout << "Stock Remaining?";
-		cin >> stock;
-		cin.ignore();
+	Gtk::Label l_retail{"Retail price ($): "};
+	l_retail.set_width_chars(30);
+	b_retail.pack_start(l_retail, Gtk::PACK_SHRINK);
 	
-		cout << "Flavor Description?";
-		getline(cin, info);
+	Gtk::Entry e_retail;
+	e_retail.set_max_length(50);
+	b_retail.pack_start(e_retail, Gtk::PACK_SHRINK);
+	dialog->get_vbox()->pack_start(b_retail, Gtk::PACK_SHRINK);
+
+	//Amount remaining
+	Gtk::HBox b_remaining;
 	
-		items.add_scoop(Scoop(flavor, info, wholesale_cost, retail_cost, stock));
+	Gtk::Label l_remaining{"Amount remaining in stock:"};
+	l_remaining.set_width_chars(30);
+	b_remaining.pack_start(l_remaining, Gtk::PACK_SHRINK);
+
+	Gtk::Entry e_remaining;
+	e_remaining.set_max_length(50);
+	b_remaining.pack_start(e_remaining, Gtk::PACK_SHRINK);
+	dialog->get_vbox()->pack_start(b_remaining, Gtk::PACK_SHRINK);
+
+	dialog->add_button("Cancel", 0);
+	dialog->add_button("OK", 1);
+	dialog->show_all();
+	int result = dialog->run();
+	
+	dialog->close();
+	while (Gtk::Main::events_pending()) Gtk::Main::iteration();
+
+	name = e_name.get_text();
+	info = e_info.get_text();
+	wholesale = std::stod(e_wholesale.get_text());
+	retail = std::stod(e_retail.get_text());
+	remaining = std::stoi(e_remaining.get_text());
+
+	if (result = 1) {
+				items.add_scoop(Scoop(name, info, wholesale, retail, remaining)); 
+	}
+	
+
 	}
 	else if (cmd == 2) { //add container
 		string name, info;
-		double wholesale_cost, retail_cost;
-		int stock, capacity;
+		double wholesale, retail;
+		int remaining, capacity;
+
+		Gtk::Dialog *dialog = new Gtk::Dialog();
+		dialog->set_title("Create Container");
+
+		//Name
+		Gtk::HBox b_name;
 	
-		cout << "Container Name?";
-		getline(cin, name);
+		Gtk::Label l_name{"Name of Container:"};
+		l_name.set_width_chars(30);
+		b_name.pack_start(l_name, Gtk::PACK_SHRINK);
 	
-		cout << "wholesale Cost?";
-		cin >> wholesale_cost;
-		cin.ignore();
+		Gtk::Entry e_name;
+		e_name.set_max_length(50);
+		b_name.pack_start(e_name, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);
+
+		//Description
+		Gtk::HBox b_info;
 	
-		cout << "Retail price?";
-		cin >> retail_cost;
-		cin.ignore();
+		Gtk::Label l_info{"Description:"};
+		l_info.set_width_chars(30);
+		b_info.pack_start(l_info, Gtk::PACK_SHRINK);
+
+		Gtk::Entry e_info;
+		e_info.set_max_length(50);
+		b_info.pack_start(e_info, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_info, Gtk::PACK_SHRINK);
+
+		//Whole sale price
+		Gtk::HBox b_wholesale;
 	
-		cout << "Stock Remaining?";
-		cin >> stock;
-		cin.ignore();
+		Gtk::Label l_wholesale{"Wholesale price ($):"};
+		l_wholesale.set_width_chars(30);
+		b_wholesale.pack_start(l_wholesale, Gtk::PACK_SHRINK);
+
+		Gtk::Entry e_wholesale;
+		e_wholesale.set_max_length(50);
+		b_wholesale.pack_start(e_wholesale, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_wholesale, Gtk::PACK_SHRINK);
+
+		//Retail price
+		Gtk::HBox b_retail;
 	
-		cout << "Scoop Capacity?";
-		cin >> capacity;
-		cin.ignore();
-	
-		cout << "Container Description?";
-		getline(cin, info);
-	
-		items.add_container(Container(name, info, wholesale_cost, retail_cost, stock, capacity));
+		Gtk::Label l_retail{"Retail price ($):"};
+		l_retail.set_width_chars(30);
+		b_retail.pack_start(l_retail, Gtk::PACK_SHRINK);
+
+		Gtk::Entry e_retail;
+		e_retail.set_max_length(50);
+		b_retail.pack_start(e_retail, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_retail, Gtk::PACK_SHRINK);
+
+		//Remaining 
+		Gtk::HBox b_remaining;
+
+		Gtk::Label l_remaining{"Amount in stock:"};
+		l_remaining.set_width_chars(30);
+		b_remaining.pack_start(l_remaining, Gtk::PACK_SHRINK);
+
+		Gtk::Entry e_remaining;
+		e_remaining.set_max_length(50);
+		b_remaining.pack_start(e_remaining, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_remaining, Gtk::PACK_SHRINK);
+		
+		//Scoop Capacity
+		Gtk::HBox b_capacity;
+
+		Gtk::Label l_capacity{"Scoop Capcity:"};
+		l_capacity.set_width_chars(30);
+		b_capacity.pack_start(l_capacity, Gtk::PACK_SHRINK);
+
+		Gtk::Entry e_capacity;
+		e_capacity.set_max_length(50);
+		b_capacity.pack_start(e_capacity, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_capacity, Gtk::PACK_SHRINK);
+
+		dialog->add_button("Cancel", 0);
+		dialog->add_button("OK", 1);
+		dialog->show_all();
+		int result = dialog->run();
+
+		dialog->close();
+		while(Gtk::Main::events_pending()) Gtk::Main::iteration();
+
+		name = e_name.get_text();
+		info = e_info.get_text();
+		wholesale = std::stod(e_wholesale.get_text());
+		retail = std::stod(e_retail.get_text());
+		remaining = std::stoi(e_remaining.get_text());
+		capacity = std::stoi(e_capacity.get_text());
+
+		if (result == 1) {
+			items.add_container(Container(name, info, wholesale, retail, remaining, capacity)); 
+		}
+		
 	}
 	else if (cmd == 3) { //add topping
 		string name, info;
-		double wholesale_cost, retail_cost;
-		int stock;
+		double wholesale, retail;
+		int remaining;
+
 	
-		cout << "Ice Cream Topping Name?";
-		getline(cin, name);
+		Gtk::Dialog *dialog = new Gtk::Dialog();
+		dialog->set_title("Create a new Topping");
+
+		//Name
+		Gtk::HBox b_name;
+
+		Gtk::Label l_name{"Name of Topping:"};
+		l_name.set_width_chars(30);
+		b_name.pack_start(l_name, Gtk::PACK_SHRINK);
+
+		Gtk::Entry e_name;
+		e_name.set_max_length(50);
+		b_name.pack_start(e_name, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);
+
+		//Description
+		Gtk::HBox b_info;
 	
-		cout << "wholesale Cost?";
-		cin >> wholesale_cost;
-		cin.ignore();
+		Gtk::Label l_info{"Description:"};
+		l_info.set_width_chars(30);
+		b_info.pack_start(l_info, Gtk::PACK_SHRINK);
 	
-		cout << "Retail price?";
-		cin >> retail_cost;
-		cin.ignore();
+		Gtk::Entry e_info;
+		e_info.set_max_length(50);
+		b_info.pack_start(e_info, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_info, Gtk::PACK_SHRINK);
+
+		//Wholesale price
+		Gtk::HBox b_wholesale;
 	
-		cout << "Stock Remaining?";
-		cin >> stock;
-		cin.ignore();
+		Gtk::Label l_wholesale{"Wholesale price ($):"};
+		l_wholesale.set_width_chars(30);
+		b_wholesale.pack_start(l_wholesale, Gtk::PACK_SHRINK);
 	
-		cout << "Topping Description?";
-		getline(cin, info);
+		Gtk::Entry e_wholesale;
+		e_wholesale.set_max_length(50);
+		b_wholesale.pack_start(e_wholesale, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_wholesale, Gtk::PACK_SHRINK);
+
+		//Retail price
+		Gtk::HBox b_retail;
 	
-		items.add_topping(Topping(name, info, wholesale_cost, retail_cost, stock));
+		Gtk::Label l_retail{"Retail price ($):"};
+		l_retail.set_width_chars(30);
+		b_retail.pack_start(l_retail, Gtk::PACK_SHRINK);
+	
+		Gtk::Entry e_retail;
+		e_retail.set_max_length(50);
+		b_retail.pack_start(e_retail, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_retail, Gtk::PACK_SHRINK);
+	
+		//Remaining in stock
+		Gtk::HBox b_remaining;
+	
+		Gtk::Label l_remaining{"Amount in stock:"};
+		l_remaining.set_width_chars(30);
+		b_remaining.pack_start(l_remaining, Gtk::PACK_SHRINK);
+	
+		Gtk::Entry e_remaining;
+		e_remaining.set_max_length(50);
+		b_remaining.pack_start(e_remaining, Gtk::PACK_SHRINK);
+		dialog->get_vbox()->pack_start(b_remaining, Gtk::PACK_SHRINK);
+
+		dialog->add_button("Cancel", 0);
+		dialog->add_button("OK", 1);
+		dialog->show_all();
+		int result = dialog->run();
+
+		dialog->close();
+		while(Gtk::Main::events_pending()) Gtk::Main::iteration();
+
+		name = e_name.get_text();
+		info = e_info.get_text();
+		wholesale = std::stod(e_wholesale.get_text());
+		retail = std::stod(e_retail.get_text());
+		remaining = std::stoi(e_remaining.get_text());
+
+		if (result == 1) {
+			items.add_topping(Topping(name, info, wholesale, retail, remaining)); }
+
 	}
 	else if (cmd == 4) {//list scoops
 		view.list_scoops();
