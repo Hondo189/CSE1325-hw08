@@ -86,5 +86,5 @@ void Main_window::on_list_scoops_click() {_controller.execute_cmd(4);}
 void Main_window::on_list_containers_click() {_controller.execute_cmd(5);}
 void Main_window::on_list_toppings_click() {_controller.execute_cmd(6);}
 void Main_window::on_help_click() {_controller.execute_cmd(9);}
-//void Main_window::on_test_data_click() {_controller.execute_cmd(99);}
+void Main_window::on_test_data_click() {_controller.execute_cmd(99);}
 void Main_window::on_quit_click() { hide(); }

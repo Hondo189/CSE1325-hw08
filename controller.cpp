@@ -312,4 +312,9 @@ void Controller::execute_cmd(int cmd) {
 	else if (cmd == 9) {//help
 		view.help();	
 	}
+	else if (cmd == 99) {//populate test data
+		items.add_scoop(Scoop("Vanilla", "Classic Vanilla Bean", .5, 2, 500);
+		items.add_container(Container("Sugar Cone", "Classic Cripsy Cone", .25, 1, 200);
+		items.add_topping(Topping("Chocolate Sprinkles", "Chocolate Flavored Sprinkles", .01, .25, 1000);
+	}
 }		
