@@ -36,34 +36,6 @@ CSE1325 MICE Management System<sup><small>TM</small></sup></span>
 }
 
 
-/*void View::show_menu() {
-	string menu = R"(
-==============================
-CSE1325 MICE Management System
-==============================
-
-Add Item
------
-(1) Add Ice Cream Scoop
-(2) Add Ice Cream Container
-(3) Add Ice Cream Topping
-
-Check Inventory
----------------
-(4) List Ice Cream Scoops
-(5) List Ice Cream Containers
-(6) List Ice Cream Toppings
-
-Utility
--------
-(9) Help
-(99) Populate Test Data
-(0) Exit
-)";
-
-	cout << menu << endl;
-}*/
-
 void View::list_scoops() {
 	string scoop_list = "";
 
@@ -92,6 +64,24 @@ void View::list_toppings() {
 }
 
 void View::help() {
-	string help = "Enter an integer corresponding to the command you wish to execute";
-	Dialogs::message(help, "Help");
+	string helptext = R"(
+The LMS<sup>TM</sup> tracks publication assets for a library, including those who
+check out and return those publications.
+
+<b>Scoop</b> 
+	<b>Add</b> - Add new scoop flavor to inventory.
+	<b>List</b> - List all scoop flavors in inventory.
+<b>Container</b> 
+	<b>Add</b> - Add new ice cream container to inventory.
+	<b>List</b> - List all ice cream containers in inventory.
+<b>Topping</b> 
+	<b>Add</b> - Add new ice cream topping to inventory.
+	<b>List</b> - List all ice cream toppings in inventory. 
+<b>File</b>
+	<b>Help</b> - Print this text.
+	<b>Test Data</b> - command to pre-populate test data.
+	<b>Quit</b> - Quit the program. WARNING: The current version does NOT
+    		save any entered data.
+  )";
+	Dialogs::message(helptext, "Help");
 }
